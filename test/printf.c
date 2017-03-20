@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 			{'c', charType},
 			{'d', intType},
 //			{'f', floatType},
-//			{'s', stringType},
+			{'s', stringType},
 			{'\0', NULL}		
 		};
 	va_start(list1, format);
