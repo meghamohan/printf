@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 
 	index = &temp;
 	ftype ftype1[] = {
-//			{'c', charType},
+			{'c', charType},
 			{'d', intType},
 //			{'f', floatType},
 //			{'s', stringType},
@@ -53,5 +53,5 @@ int _printf(const char *format, ...)
 	}
 	buffer[*index] = '\0';
 	printBuffer(buffer, index);
-	return (0);
+	return (*index);
 }
