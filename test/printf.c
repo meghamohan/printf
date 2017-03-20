@@ -38,6 +38,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			j = 0;
 			while (ftype1[j].t != '\0')
 			{
 				if (format[i] == ftype1[j].t)

@@ -16,7 +16,7 @@ void printBuffer(char *buffer, int *index)
   * resetBuffer - function that resets a buffer
   * @buffer: buffer pointer
   */
-void reset_buffer(char *buffer)
+void resetBuffer(char *buffer)
 {
 	int i;
 

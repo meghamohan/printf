@@ -1,4 +1,6 @@
 #include "holberton.h"
+#include <stdarg.h>
+#include <stdio.h>
 
 void intType(va_list list1, char *buffer, int *index)
 {
@@ -31,4 +33,18 @@ void intType(va_list list1, char *buffer, int *index)
 		}
 		buffer[*index] = str[j];
 	}	
+}
+void charType(va_list list1, char *buffer, int *index)
+{
+        char c;
+
+	c = va_arg(list1, int);
+	if (*index == 1024)
+	{
+		printBuffer(buffer, index);
+		resetBuffer(buffer);
+		*index = 0;
+	}
+	buffer[*index] = c;
+	*index += 1;
 }

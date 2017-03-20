@@ -9,7 +9,8 @@ int _printf(const char *format, ...);
 //int _putchar(char c);
 //int _strlen(char *s);
 //char *_strcpy(char *dest, char *src);
-void intType(va_list valist, char *buffer, int *index);
+void intType(va_list list1, char *buffer, int *index);
+void charType(va_list list1, char *buffer, int *index);
 void printBuffer(char *buffer, int *index);
 void resetBuffer(char buffer[]);
 /**
