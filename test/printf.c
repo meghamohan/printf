@@ -1,20 +1,21 @@
 #include "holberton.h"
+#include <stdarg.h>
 /**
 * _printf - my own version of printf function
 *
 **/
 int _printf(const char *format, ...)
 {
-	int i, j, temp, *index;
+	int i = 0, j = 0, temp = 0, *index;
 	char buffer[1024];
 	va_list list1;
 
 	index = &temp;
 	ftype ftype1[] = {
-			{'c', charType},
+//			{'c', charType},
 			{'d', intType},
-			{'f', floatType},
-			{'s', stringType},
+//			{'f', floatType},
+//			{'s', stringType},
 			{'\0', NULL}		
 		};
 	va_start(list1, format);
@@ -37,12 +38,11 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			j = 0;
-			while (ftype[j].t != '\0')
+			while (ftype1[j].t != '\0')
 			{
-				if (format[i] == ftype[j].t)
+				if (format[i] == ftype1[j].t)
 				{
-					ftype[j].f(list1, buffer, index);
+					ftype1[j].f(list1, buffer, index);
 					break;
 				}
 				j++;

@@ -2,14 +2,15 @@
 
 void intType(va_list list1, char *buffer, int *index)
 {
-	int number, i, j, temp, length;
-	char str[];
+	int number, i = 0, j = 0, temp, length = 0;
+	int remainder = 0;
+	char str[50];
 
 	number = va_arg(list1, int);
 	temp = number;
 	while (temp != 0)
 	{
-		lenth++;
+		length++;
 		temp /= 10;
 	}
 	for (i = 0; i < length; i++)
@@ -20,7 +21,7 @@ void intType(va_list list1, char *buffer, int *index)
 	}
 	str[length] = '\0';
 	
-	for (i = *index, j = 0 ; j <length ; i++, j++, *index += 1)
+	for (i = *index, j = 0 ; j < length ; i++, j++, *index += 1)
 	{
 		if (*index == 1024)
 		{
