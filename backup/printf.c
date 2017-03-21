@@ -1,16 +1,26 @@
 #include "holberton.h"
+#include <stdarg.h>
 /**
- * _printf - my own version of printf function
- * @format: char that designates format.
- * Return: length of chars that were printed
- **/
+* _printf - my own version of printf function
+* @format: takes format specifier
+* Return: returns pointer to index
+**/
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, temp = 0, *index; char buffer[1024]; va_list list1;
-	ftype ftype1[] = {
-		{'c', charType}, {'d', intType}, {'i', intType},
-		{'s', stringType}, {'u', unintType}, {'\0', NULL} };
+	int i = 0, j = 0, temp = 0, *index;
+	char buffer[1024];
+	va_list list1;
+
 	index = &temp;
+	ftype ftype1[] = {
+			{'c', charType},
+			{'d', intType},
+			{'i', intType},
+			{'s', stringType},
+			{'%', percentType},
+			{'R', rot13Type},
+			{'\0', NULL}
+		};
 	va_start(list1, format);
 	while (format[i] != '\0')
 	{
@@ -44,5 +54,7 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
-	buffer[*index] = '\0'; printBuffer(buffer, index); return (*index);
+	buffer[*index] = '\0';
+	printBuffer(buffer, index);
+	return (*index);
 }

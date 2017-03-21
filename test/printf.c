@@ -8,7 +8,7 @@ int _printf(const char *format, ...)
 {
 	int i = 0, j = 0, temp = 0, *index; char buffer[1024]; va_list list1;
 	ftype ftype1[] = {
-		{'c', charType}, {'d', intType}, {'i', intType}, 
+		{'c', charType}, {'d', intType}, {'i', intType},
 		{'s', stringType}, {'u', unintType}, {'\0', NULL} };
 	index = &temp;
 	va_start(list1, format);
