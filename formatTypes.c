@@ -1,18 +1,14 @@
 #include "holberton.h"
-#include <stdarg.h>
-#include <stdio.h>
 /**
- * intType - function that copies an int value to buffer
- * @list1: takes valist
- * @buffer: buffer
- * @index: index pointer
- *
- * Return: void
+ * intType - helper function to print an int or decimal.
+ * @list1: string to be converted by funtion.
+ * @buffer: buffer to store output
+ * @index: current location in the buffer
+ * Return: returns none, prints buffer.
  */
-
 void intType(va_list list1, char *buffer, int *index)
 {
-	int number, i = 0, j = 0, temp, length = 0, remainder = 0;
+	int number, i = 0, j = 0, temp, length = 0, remainder = 0, flag = 0;
 	char str[50];
 
 	number = temp = va_arg(list1, int);
@@ -23,6 +19,7 @@ void intType(va_list list1, char *buffer, int *index)
 	}
 	if (number < 0)
 	{
+		flag = 1;
 		str[i] = '-';
 		i++; length++;
 		number = number  * -1;
@@ -31,7 +28,10 @@ void intType(va_list list1, char *buffer, int *index)
 	{
 		remainder = number % 10;
 		number = number / 10;
-		str[length - i] = remainder + '0';
+		if (flag == 1)
+			str[length - i] = remainder + '0';
+		else
+			str[length - (i + 1)] = remainder + '0';
 	}
 	str[length] = '\0';
 	for (i = *index, j = 0 ; j < length ; i++, j++, *index += 1)
@@ -45,16 +45,13 @@ void intType(va_list list1, char *buffer, int *index)
 		buffer[*index] = str[j];
 	}
 }
-
 /**
- * charType - function that copies a char value to buffer
- * @list1: takes valist
- * @buffer: buffer
- * @index: index pointer
- *
- * Return: void
+ * charType - helper function to print a char.
+ * @list1: string to be converted by funtion.
+ * @buffer: buffer to store output
+ * @index: current location in the buffer
+ * Return: returns none, prints buffer.
  */
-
 void charType(va_list list1, char *buffer, int *index)
 {
 	char c;
@@ -69,16 +66,13 @@ void charType(va_list list1, char *buffer, int *index)
 	buffer[*index] = c;
 	*index += 1;
 }
-
 /**
- * stringType - function that copies a string to buffer
- * @list1: takes valist
- * @buffer: buffer
- * @index: index pointer
- *
- * Return: void
+ * stringType - helper function to print a string.
+ * @list1: string to be converted by funtion.
+ * @buffer: buffer to store output
+ * @index: current location in the buffer
+ * Return: returns none, prints buffer.
  */
-
 void stringType(va_list list1, char *buffer, int *index)
 {
 	int i, j;
@@ -96,42 +90,35 @@ void stringType(va_list list1, char *buffer, int *index)
 		buffer[*index] = s[j];
 	}
 }
-
 /**
- * percentType - function that copies a percent to buffer
- * @list1: takes valist
- * @buffer: buffer
- * @index: index pointer
- *
- * Return: void
+ * unintType - helper function to print unsigned int.
+ * @list1: string to be converted by funtion.
+ * @buffer: buffer to store output
+ * @index: current location in the buffer
+ * Return: returns none, prints buffer.
  */
-
-void percentType(va_list list1, char *buffer, int *index)
+void unintType(va_list list1, char *buffer, int *index)
 {
-	list1 = list1;
-	buffer[*index] = '%';
-	*index += 1;
-}
+	unsigned int i, j, k, temp, length;
+	char *str;
 
-/**
- * rot13Type - function that converts a string to rot13
- * and copies to buffer
- * @list1: takes valist
- * @buffer: buffer
- * @index: index pointer
- *
- * Return: void
- */
+	k = va_arg(list1, unsigned int);
+	temp = k;
+	for (i = 0; temp > 0; i++)
+		temp = temp / 10;
 
-void rot13Type(va_list list1, char *buffer, int *index)
-{
-	int i = 0, j = 0;
-	char rot1[] = "abcdefghijklmABCDEFGHIJKLM";
-	char rot2[] = "nopqrstuvwxyzNOPQRSTUVWXYZ";
-	char *temp;
+	length = i;
+	str = malloc((length + 1) * sizeof(char));
+	if (str == NULL)
+		exit(0);
+	for (j = 0; j < i; j++)
+	{
+		str[j] = k % 10 + '0';
+		k = k / 10;
+	}
+	str[j] = '\0';
 
-	temp = va_arg(list1, char*);
-	for (i = *index, j = 0; temp[j] != '\0';  *index += 1, i++, j++)
+	for (i = *index, j = 0 ; j < length ; i++, j++, *index += 1)
 	{
 		if (*index == 1024)
 		{
@@ -139,13 +126,7 @@ void rot13Type(va_list list1, char *buffer, int *index)
 			resetBuffer(buffer);
 			*index = 0;
 		}
-		if (temp[i] == rot1[j])
-		{
-			buffer[*index] = rot2[j];
-		}
-		else if (temp[i] == rot2[j])
-		{
-			buffer[*index] = rot1[j];
-		}
+		buffer[*index] = str[j];
 	}
+	free(str);
 }
