@@ -2,7 +2,8 @@
 #include <stdarg.h>
 /**
 * _printf - my own version of printf function
-*
+* @format: takes format specifier
+* Return: returns pointer to index
 **/
 int _printf(const char *format, ...)
 {
@@ -18,7 +19,7 @@ int _printf(const char *format, ...)
 			{'s', stringType},
 			{'%', percentType},
 			{'R', rot13Type},
-			{'\0', NULL}		
+			{'\0', NULL}
 		};
 	va_start(list1, format);
 	while (format[i] != '\0')
