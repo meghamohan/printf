@@ -9,7 +9,7 @@ char *rstr(char *s)
 	char string;
 
 	for (count = 0; s[count] != '\0'; count++)
-
+		;
 	count--;
 	for (count2 = 0; count2 <= count / 2; count2++)
 	{
@@ -19,4 +19,3 @@ char *rstr(char *s)
 	}
 	return (s);
 }
-

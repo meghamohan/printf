@@ -117,7 +117,7 @@ void unintType(va_list list1, char *buffer, int *index)
 		k = k / 10;
 	}
 	str[j] = '\0';
-
+	str = rstr(str);
 	for (i = *index, j = 0 ; j < length ; i++, j++, *index += 1)
 	{
 		if (*index == 1024)
