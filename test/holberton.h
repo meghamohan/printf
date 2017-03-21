@@ -12,9 +12,12 @@ int _printf(const char *format, ...);
 void intType(va_list list1, char *buffer, int *index);
 void charType(va_list list1, char *buffer, int *index);
 void stringType(va_list list1, char *buffer, int *index);
+void percentType(va_list list1, char *buffer, int *index);
+void rot13Type(va_list list1, char *buffer, int *index);
+void unintType(va_list list1, char *buffer, int *index);
 void printBuffer(char *buffer, int *index);
 void resetBuffer(char buffer[]);
-int absolute(int num);
+int findIntLength(int n);
 /**
 * struct functionType
 * @t: type
