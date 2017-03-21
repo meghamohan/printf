@@ -11,6 +11,7 @@ int _printf(const char *format, ...);
 //char *_strcpy(char *dest, char *src);
 void intType(va_list list1, char *buffer, int *index);
 void charType(va_list list1, char *buffer, int *index);
+void stringType(va_list list1, char *buffer, int *index);
 void printBuffer(char *buffer, int *index);
 void resetBuffer(char buffer[]);
 /**

@@ -22,7 +22,6 @@ void intType(va_list list1, char *buffer, int *index)
 		str[length - (i + 1)] = remainder + '0';
 	}
 	str[length] = '\0';
-	
 	for (i = *index, j = 0 ; j < length ; i++, j++, *index += 1)
 	{
 		if (*index == 1024)
@@ -34,6 +33,7 @@ void intType(va_list list1, char *buffer, int *index)
 		buffer[*index] = str[j];
 	}	
 }
+
 void charType(va_list list1, char *buffer, int *index)
 {
         char c;
@@ -47,4 +47,22 @@ void charType(va_list list1, char *buffer, int *index)
 	}
 	buffer[*index] = c;
 	*index += 1;
+}
+
+void stringType(va_list list1, char *buffer, int *index)
+{
+	int i, j;
+	char *s;
+
+	s = va_arg(list1, char*);
+	for (i = *index, j = 0; s[j] != '\0';  *index += 1, i++, j++)
+	{
+		if (*index == 1024)
+                {
+                        printBuffer(buffer, index);
+                        resetBuffer(buffer);
+			*index = 0;
+                }
+		buffer[*index] = s[j];
+	}
 }
