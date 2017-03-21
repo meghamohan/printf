@@ -14,8 +14,10 @@ int _printf(const char *format, ...)
 	ftype ftype1[] = {
 			{'c', charType},
 			{'d', intType},
+			{'i', intType},
 //			{'f', floatType},
 			{'s', stringType},
+			{'u', unintType},
 			{'\0', NULL}		
 		};
 	va_start(list1, format);
