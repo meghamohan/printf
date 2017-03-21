@@ -14,6 +14,7 @@ void charType(va_list list1, char *buffer, int *index);
 void stringType(va_list list1, char *buffer, int *index);
 void printBuffer(char *buffer, int *index);
 void resetBuffer(char buffer[]);
+int absolute(int num);
 /**
 * struct functionType
 * @t: type
