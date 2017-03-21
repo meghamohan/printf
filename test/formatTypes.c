@@ -8,7 +8,7 @@
  */
 void intType(va_list list1, char *buffer, int *index)
 {
-	int number, i = 0, j = 0, temp, length = 0, remainder = 0;
+	int number, i = 0, j = 0, temp, length = 0, remainder = 0, flag = 0;
 	char str[50];
 
 	number = temp = va_arg(list1, int);
@@ -19,6 +19,7 @@ void intType(va_list list1, char *buffer, int *index)
 	}
 	if (number < 0)
 	{
+		flag = 1;
 		str[i] = '-';
 		i++; length++;
 		number = number  * -1;
@@ -27,7 +28,10 @@ void intType(va_list list1, char *buffer, int *index)
 	{
 		remainder = number % 10;
 		number = number / 10;
-		str[length - i] = remainder + '0';
+		if (flag == 1)
+			str[length - i] = remainder + '0';
+		else
+			str[length - (i + 1)] = remainder + '0';
 	}
 	str[length] = '\0';
 	for (i = *index, j = 0 ; j < length ; i++, j++, *index += 1)
