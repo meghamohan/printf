@@ -6,12 +6,17 @@
 #include <string.h>
 #include <unistd.h>
 int _printf(const char *format, ...);
-//int _putchar(char c);
-//int _strlen(char *s);
-//char *_strcpy(char *dest, char *src);
+/**
+ * int _putchar(char c);
+ * int _strlen(char *s);
+ * char *_strcpy(char *dest, char *src);
+ */
+char *rstr(char *s);
 void intType(va_list list1, char *buffer, int *index);
 void charType(va_list list1, char *buffer, int *index);
 void stringType(va_list list1, char *buffer, int *index);
+
+int absolute(int num);
 void percentType(va_list list1, char *buffer, int *index);
 void rot13Type(va_list list1, char *buffer, int *index);
 void unintType(va_list list1, char *buffer, int *index);
