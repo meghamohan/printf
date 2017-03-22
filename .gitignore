@@ -1,5 +1,5 @@
-*~
-.gitignore
+
+/test/*
 *#*
 *_MINE.c
 *template*.c
