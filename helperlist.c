@@ -1,3 +1,4 @@
+#include "holberton.h"
 /**
  * rstr - reverses a string.
  * @s: string to be reversed.

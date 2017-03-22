@@ -9,7 +9,8 @@ int _printf(const char *format, ...)
 	int i = 0, j = 0, temp = 0, *index; char buffer[1024]; va_list list1;
 	ftype ftype1[] = {
 		{'c', charType}, {'d', intType}, {'i', intType},
-		{'s', stringType}, {'u', unintType}, {'\0', NULL} };
+		{'s', stringType}, {'u', unintType}, {'o', octType},
+		{'b', biType}, {'\0', NULL} };
 	index = &temp;
 	va_start(list1, format);
 	while (format[i] != '\0')
@@ -23,8 +24,7 @@ int _printf(const char *format, ...)
 				*index = 0;
 			}
 			buffer[*index] = format[i];
-			i++;
-			*index += 1;
+			i++; *index += 1;
 		}
 		if (format[i] == '\0')
 			break;
