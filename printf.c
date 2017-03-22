@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	ftype ftype1[] = {
 		{'c', charType}, {'d', intType}, {'i', intType},
 		{'s', stringType}, {'u', unintType}, {'o', octType},
-		{'b', biType}, {'%', percentType}, {'R', rot13Type},{'\0', NULL} };
+		{'b', biType}, {'%', percentType}, {'R', rot13Type}, {'\0', NULL} };
 	index = &temp;
 	va_start(list1, format);
 	while (format[i] != '\0')
