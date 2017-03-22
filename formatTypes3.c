@@ -21,29 +21,31 @@ void percentType(va_list list1, char *buffer, int *index)
  */
 void rot13Type(va_list list1, char *buffer, int *index)
 {
-	int i = 0, j = 0;
-	char rot1[] = "abcdefghijklmABCDEFGHIJKLM";
-	char rot2[] = "nopqrstuvwxyzNOPQRSTUVWXYZ";
 	char *temp;
+	int i, j;
+	char rot1[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char rot2[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-	list1 = list1;
-	temp = va_arg(list1, char*);
-	for (i = *index, j = 0; temp[j] != '\0';  *index += 1, i++, j++)
+	temp = va_arg(list1, char *);
+	if (temp == NULL)
+		return;
+	for (i = 0; temp[i] != '\0'; i++)
 	{
-		if (*index == 1024)
+		for (j = 0; j <= 51; j++)
 		{
-			printBuffer(buffer, index);
-			resetBuffer(buffer);
-			*index = 0;
+			if (temp[i] == rot2[j])
+			{
+				buffer[*index] = rot1[j];
+				*index += 1;
+				break;
+			}
 		}
-		if (temp[i] == rot1[j])
-		{
-			buffer[*index] = rot2[j];
-		}
-		else if (temp[i] == rot2[j])
-		{
-			buffer[*index] = rot1[j];
+		if (j == 52)
+		{	
+			buffer[*index] = temp[i];
+			*index += 1;
 		}
 	}
 }
+
 
