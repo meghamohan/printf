@@ -2,7 +2,7 @@
 #define HOLBERTON_H
 #include <stdarg.h>
 #include <stdlib.h>
-//#include <stdio.h>
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 int _printf(const char *format, ...);
@@ -30,4 +30,4 @@ typedef struct formatType
 	void (*f)();
 } ftype;
 
-#endif /* HOLBERTON_H */
+#endif
