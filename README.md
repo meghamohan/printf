@@ -33,6 +33,6 @@ format tags must follow the format of [flags][width][.precision][length]specifie
 | b             | Binary                                |
 | p             | pointer address                       |
 
-###Project Members
+###Project Members:
 Megha Mohan
 Stuart Fosse
