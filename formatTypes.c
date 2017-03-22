@@ -9,7 +9,7 @@
 void intType(va_list list1, char *buffer, int *index)
 {
 	int number, i = 0, j = 0, temp, length = 0, remainder = 0, flag = 0;
-	char str[50];
+	char *str;
 
 	number = temp = va_arg(list1, int);
 	while (temp != 0)
@@ -17,6 +17,7 @@ void intType(va_list list1, char *buffer, int *index)
 		length++;
 		temp /= 10;
 	}
+	str = malloc((length + 1) * sizeof(char));
 	if (number < 0)
 	{
 		flag = 1;
@@ -44,6 +45,7 @@ void intType(va_list list1, char *buffer, int *index)
 		}
 		buffer[*index] = str[j];
 	}
+	free(str);
 }
 /**
  * charType - helper function to print a char.
